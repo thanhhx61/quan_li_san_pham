@@ -1,0 +1,60 @@
+﻿@model ViewProduct
+@{
+    ViewBag.Title = $"{Model.Category.CategoryName} | View";
+}
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="form-group">
+            <input type="hidden" asp-for="@Model.ProductId" />
+            <img class="img-thumbnail no-photo" src="@Model.ExistPhoto" alt="no photo" />
+        </div>
+        <div class="form-group">
+            <a asp-controller="Book" asp-action="Modify" asp-route-bookId="@Model.ProductId" class="btn btn-primary">
+                <i class="fas fa-edit">
+                </i>
+                Update
+            </a>
+            <a asp-controller="Book" asp-action="Remove" asp-route-bookId="@Model.ProductId" class="btn btn-danger">
+                <i class="fas fa-trash">
+                </i>
+                Remove
+            </a>
+            <a class="btn btn-secondary" asp-controller="Book" asp-action="index" asp-route-catId="@ViewBag.CategoryId">
+                <i class="fas fa-backward">
+                </i>
+                Back
+            </a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="ProductName"></label>
+            <input class="form-control" asp-for="ProductName" readonly placeholder="Book name">
+        </div>
+        <div class="form-group">
+            <label asp-for="Producer"></label>
+            <input class="form-control" asp-for="Producer" readonly placeholder="Authors">
+        </div>
+        <div class="form-group">
+            <label asp-for="Year"></label>
+            <input class="form-control" asp-for="Year" readonly placeholder="Publish year">
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="Price"></label>
+                <input class="form-control" asp-for="Price" readonly placeholder="Price">
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Amout"></label>
+                <input class="form-control" asp-for="Amout" readonly placeholder="Quantity">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea class="form-control" rows="12" asp-for="Description" readonly placeholder="Description"></textarea>
+        </div>
+    </div>
+</div>
